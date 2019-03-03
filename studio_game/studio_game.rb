@@ -80,6 +80,70 @@ class Player
 
 end
 
+player1 = Player.new("Moe", 100)
+player2 = Player.new("Larry", 60)
+player3 = Player.new("Curly", 125)
+player4 = Player.new("Shemp", 90)
+
+
+class Game
+
+  def initialize(title)
+    @title = title
+    @players = []
+  end
+
+  def add_player(player)
+    @players << player
+    #or can use players.push(player)
+  end
+
+  def play
+
+    puts "Game.play Activated!".center(80, "*")
+    puts "There are #{@players.size} players in #{@title}:"
+    @players.each do |player|
+    puts "I am #{player.name} with a health of #{player.health}"
+    end
+
+  end
+
+  def addPlayerTest
+
+    puts "You currently have #{@players.size} players."
+    puts "Add more?"
+    decision = gets.chomp
+
+    if decision == "yes"
+      puts"What's the name of the player?"
+      newPlayerName = gets.chomp
+      newPlayer = Player.new(newPlayerName)
+      @players.push(newPlayer)
+    else
+      puts "Okay, I won't touch anything..."
+    end
+
+  end
+
+
+
+end
+
+
+knuckleheads = Game.new("Knuckleheads")
+knuckleheads.add_player(player1)
+knuckleheads.add_player(player2)
+knuckleheads.add_player(player3)
+knuckleheads.add_player(player4)
+knuckleheads.play
+#knuckleheads.add_player(player1)
+#knuckleheads.add_player(player2)
+#knuckleheads.add_player(player3)
+#knuckleheads.play
+
+gameChipmunks = Game.new("chipmunks")
+gameChipmunks.addPlayerTest
+gameChipmunks.play
 
 =begin
 
@@ -102,11 +166,9 @@ puts player3.name
 
 #Chapter 9 - Arrays.  Let's use arrays to iterate through code to get the players status.
 
-player1 = Player.new("Moe", 100)
-player2 = Player.new("Larry", 60)
-player3 = Player.new("Curly", 125)
-player4 = Player.new("Shemp", 90)
 
+
+=begin
 players = [player1, player2, player3]
 puts "There are #{players.size} players in the game:"
 
@@ -131,3 +193,5 @@ players.each do |player|
   player.w00t
   puts player
 end
+
+=end

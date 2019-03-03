@@ -47,9 +47,52 @@ class Movie
 
 end
 
+class Playlist
+
+  attr_accessor :movies
+
+  def initialize(name)
+    @name = name
+    @movies = []
+  end
+
+  def add_movie(movie)
+    @movies << movie
+
+  end
+
+  def play
+    puts "#{@name} Playlist:"
+    puts @movies
+
+    @movies.each do |movie|
+      movie.thumbs_up
+      movie.thumbs_up
+    end
+  end
+
+end
+
 movie1 = Movie.new("goonies", 10)
 movie2 = Movie.new("ghostbusters", 9)
 movie3 = Movie.new("goldfinger", 7)
+movie4 = Movie.new("gremlins", 15)
+
+playList1 = Playlist.new("playlist 1")
+playList1.add_movie(movie1)
+playList1.add_movie(movie2)
+puts  playList1.movies
+puts playList1.play
+
+playList2 = Playlist.new("fozzie")
+playList2.add_movie(movie3)
+playList2.add_movie(movie4)
+puts playList2.play
+
+
+=begin
+
+
 puts movie1.thumbs_up
 
 #Array Practice
@@ -67,6 +110,7 @@ movies.each do |movie|
   movie.thumbs_up
   puts movie
 end
+
 
 puts movies
 puts "\n\n\n***************"
@@ -88,3 +132,4 @@ puts titlesNew
 puts titlesNew.join(" and ")
 
 puts titlesNew.shuffle
+=end
