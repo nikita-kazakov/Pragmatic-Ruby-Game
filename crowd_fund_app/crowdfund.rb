@@ -14,7 +14,7 @@ puts "Project #{project3_name} has $#{project3_fund} in funding."
 puts""
 puts "Projects:\n\t#{project1_name}\n\t#{project2_name}\n\t#{project3_name}"
 
-=end
+
 
 #Chapter 6
 def project_list(name, fund)
@@ -24,3 +24,43 @@ puts"List of Projects"
 puts project_list("ABC", 1000)
 puts project_list("LMN", 2000)
 puts project_list("XYZ", 5000)
+
+=end
+
+#Chapter 7
+class Project
+
+  def initialize(name, amountInit, amountTarget)
+
+    @name = name
+    @amountInit = amountInit
+    @amountTarget = amountTarget
+  end
+
+  def fund_increase
+    @amountInit += 25
+    puts"#{@name} has INCREASED funds!"
+  end
+
+  def fund_decrease
+    @amountInit -= 15
+    puts"#{@name} has DECREASED funds!"
+  end
+
+  def to_s
+    "#{@name} has $#{@amountInit}. Goal is: #{@amountTarget}."
+  end
+
+  def fund_increase_by(amt)
+    @amountInit = @amountInit + amt
+  end
+
+end
+
+xyz = Project.new("xyz",500,1000)
+puts xyz
+
+puts xyz.fund_decrease
+puts xyz
+puts xyz.fund_increase_by(500)
+puts xyz
