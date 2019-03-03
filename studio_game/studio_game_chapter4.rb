@@ -1,5 +1,3 @@
-=begin
-
 #Chapter 3 Numbers and Strings
 
 name1 = "larry"
@@ -29,7 +27,7 @@ puts time_start.strftime("The game started on %A %d/%m/%Y at %H:%M%p")
 
 puts self
 self.class
-
+puts "\n\n\n******************************"
 #Chapter 4 - Methods
 
 def time_now
@@ -46,43 +44,3 @@ puts say_hello("curly", 125)
 puts say_hello("moe")
 puts say_hello("shemp", 90)
 
-=end
-
-#Chapter 7 - Classes
-
-class Player
-
-  def initialize(name, health = 100)
-    @name = name.capitalize
-    @health = health
-  end
-
-  def to_s
-    "I'm #{@name} with a health of #{@health}"
-  end
-
-  def w00t
-    @health = @health + 15
-    puts "#{@name} got w00ted!"
-  end
-
-  def blam
-    @health = @health - 10
-    puts "#{@name} got blammed!"
-  end
-
-end
-
-player1 = Player.new("moe")
-puts player1
-
-player2 = Player.new("larry", 60)
-puts player2
-
-player3 = Player.new("curly", 125)
-puts player3
-
-player3.blam
-puts player3
-player3.w00t
-puts player3
