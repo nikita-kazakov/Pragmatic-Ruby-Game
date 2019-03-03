@@ -57,10 +57,23 @@ class Project
 
 end
 
-xyz = Project.new("xyz",500,1000)
-puts xyz
+proj1 = Project.new("Project1",500,1000)
+proj2 = Project.new("Project2",700,1000)
+proj3 = Project.new("Project3",300,1000)
+proj4 = Project.new("Project4",100,1000)
 
+=begin
+puts xyz
 puts xyz.fund_decrease
 puts xyz
 puts xyz.fund_increase_by(500)
 puts xyz
+=end
+
+projectsArray = [proj1, proj2, proj3, proj4]
+
+puts "There are #{projectsArray.size} projects:"
+projectsArray.each do |project|
+  puts "- #{project}"
+
+end

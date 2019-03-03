@@ -52,6 +52,9 @@ puts say_hello("shemp", 90)
 
 class Player
 
+  attr_reader :health, :name
+  attr_writer :name
+
   def initialize(name, health = 100)
     @name = name.capitalize
     @health = health
@@ -71,7 +74,14 @@ class Player
     puts "#{@name} got blammed!"
   end
 
+  def score
+    @health + @name.length
+  end
+
 end
+
+
+=begin
 
 player1 = Player.new("moe")
 puts player1
@@ -85,4 +95,39 @@ puts player3
 player3.blam
 puts player3
 player3.w00t
-puts player3
+puts player3.name = "wallace"
+puts player3.name
+
+=end
+
+#Chapter 9 - Arrays.  Let's use arrays to iterate through code to get the players status.
+
+player1 = Player.new("Moe", 100)
+player2 = Player.new("Larry", 60)
+player3 = Player.new("Curly", 125)
+player4 = Player.new("Shemp", 90)
+
+players = [player1, player2, player3]
+puts "There are #{players.size} players in the game:"
+
+#prints players status
+players.each do |player|
+
+  puts player
+
+end
+
+#prints player health
+players.each do |player|
+  puts player.health
+end
+
+players.pop()
+players.push(player4)
+
+players.each do |player|
+  player.blam
+  player.w00t
+  player.w00t
+  puts player
+end
