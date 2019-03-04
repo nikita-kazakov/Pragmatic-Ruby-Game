@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Pragmatic-Ruby-Game.iml" filepath="$PROJECT_DIR$/.idea/Pragmatic-Ruby-Game.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Racing-Game/.idea/Racing-Game.iml" filepath="$PROJECT_DIR$/../Racing-Game/.idea/Racing-Game.iml" />
     </modules>
   </component>
 </project>
