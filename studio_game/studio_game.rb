@@ -50,100 +50,7 @@ puts say_hello("shemp", 90)
 
 #Chapter 7 - Classes
 
-class Player
 
-  attr_reader :health, :name
-  attr_writer :name
-
-  def initialize(name, health = 100)
-    @name = name.capitalize
-    @health = health
-  end
-
-  def to_s
-    "I'm #{@name} with a health of #{@health}"
-  end
-
-  def w00t
-    @health = @health + 15
-    puts "#{@name} got w00ted!"
-  end
-
-  def blam
-    @health = @health - 10
-    puts "#{@name} got blammed!"
-  end
-
-  def score
-    @health + @name.length
-  end
-
-end
-
-player1 = Player.new("Moe", 100)
-player2 = Player.new("Larry", 60)
-player3 = Player.new("Curly", 125)
-player4 = Player.new("Shemp", 90)
-
-
-class Game
-
-  def initialize(title)
-    @title = title
-    @players = []
-  end
-
-  def add_player(player)
-    @players << player
-    #or can use players.push(player)
-  end
-
-  def play
-
-    puts "Game.play Activated!".center(80, "*")
-    puts "There are #{@players.size} players in #{@title}:"
-    @players.each do |player|
-    puts "I am #{player.name} with a health of #{player.health}"
-    end
-
-  end
-
-  def addPlayerTest
-
-    puts "You currently have #{@players.size} players."
-    puts "Add more?"
-    decision = gets.chomp
-
-    if decision == "yes"
-      puts"What's the name of the player?"
-      newPlayerName = gets.chomp
-      newPlayer = Player.new(newPlayerName)
-      @players.push(newPlayer)
-    else
-      puts "Okay, I won't touch anything..."
-    end
-
-  end
-
-
-
-end
-
-
-knuckleheads = Game.new("Knuckleheads")
-knuckleheads.add_player(player1)
-knuckleheads.add_player(player2)
-knuckleheads.add_player(player3)
-knuckleheads.add_player(player4)
-knuckleheads.play
-#knuckleheads.add_player(player1)
-#knuckleheads.add_player(player2)
-#knuckleheads.add_player(player3)
-#knuckleheads.play
-
-gameChipmunks = Game.new("chipmunks")
-gameChipmunks.addPlayerTest
-gameChipmunks.play
 
 =begin
 
@@ -195,3 +102,28 @@ players.each do |player|
 end
 
 =end
+
+
+require_relative 'player'
+require_relative 'game'
+
+player1 = Player.new("Moe", 100)
+player2 = Player.new("Larry", 60)
+player3 = Player.new("Curly", 125)
+player4 = Player.new("Shemp", 90)
+
+
+knuckleheads = Game.new("Knuckleheads")
+knuckleheads.add_player(player1)
+knuckleheads.add_player(player2)
+knuckleheads.add_player(player3)
+knuckleheads.add_player(player4)
+knuckleheads.play
+#knuckleheads.add_player(player1)
+#knuckleheads.add_player(player2)
+#knuckleheads.add_player(player3)
+#knuckleheads.play
+
+#gameChipmunks = Game.new("chipmunks")
+#gameChipmunks.addPlayerTest
+#gameChipmunks.play

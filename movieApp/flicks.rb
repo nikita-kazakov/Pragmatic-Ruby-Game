@@ -15,63 +15,10 @@ puts "#{title1} has a rank of #{rank1}"end
 
 
 
-class Movie
 
-  attr_reader :title, :rank
-  attr_writer :title
+require_relative 'movie'
+require_relative 'playlist'
 
-  def initialize(title, rank)
-    @title = title.capitalize
-    @rank = rank
-    puts "created movie object with title and rank"
-  end
-
-
-
-  def listing
-    "#{@title} has a rank of #{@rank}"
-  end
-
-  def thumbs_up
-    @rank = @rank + 1
-  end
-
-  def thumbs_down
-    @rank = @rank - 1
-  end
-
-  def to_s
-    "#{title} has a rank of #{rank}"
-  end
-
-
-end
-
-class Playlist
-
-  attr_accessor :movies
-
-  def initialize(name)
-    @name = name
-    @movies = []
-  end
-
-  def add_movie(movie)
-    @movies << movie
-
-  end
-
-  def play
-    puts "#{@name} Playlist:"
-    puts @movies
-
-    @movies.each do |movie|
-      movie.thumbs_up
-      movie.thumbs_up
-    end
-  end
-
-end
 
 movie1 = Movie.new("goonies", 10)
 movie2 = Movie.new("ghostbusters", 9)
