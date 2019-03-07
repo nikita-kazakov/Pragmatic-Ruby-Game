@@ -8,7 +8,20 @@ class Movie
     @rank = rank
   end
 
+  def hit?
+    @rank >= 10
+  end
 
+  def status
+    hit? ? "Hit" : "Flop"
+    #You could have written
+    #if hit?
+    #  "Hit"
+    #else
+    #  "Flop"
+    #end
+
+  end
 
   def listing
     "#{@title} has a rank of #{@rank}"
@@ -23,8 +36,17 @@ class Movie
   end
 
   def to_s
-    "#{title} has a rank of #{rank}"
+    "#{title} has a rank of #{rank} (#{status})"
   end
 
+
+end
+
+
+#Sample code
+if __FILE__ == $0
+
+  movie = Movie.new("goonies", 5)
+  puts movie.title
 
 end
