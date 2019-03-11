@@ -14,7 +14,7 @@ class Movie
 
   def status
     hit? ? "Hit" : "Flop"
-    #You could have written
+    #You could have  written
     #if hit?
     #  "Hit"
     #else
