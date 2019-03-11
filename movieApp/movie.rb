@@ -3,13 +3,25 @@ class Movie
   attr_reader :title, :rank
   attr_writer :title
 
-  def initialize(title, rank)
+  def initialize(title, rank=0)
     @title = title.capitalize
     @rank = rank
-    puts "created movie object with title and rank"
   end
 
+  def hit?
+    @rank >= 10
+  end
 
+  def status
+    hit? ? "Hit" : "Flop"
+    #You could have written
+    #if hit?
+    #  "Hit"
+    #else
+    #  "Flop"
+    #end
+
+  end
 
   def listing
     "#{@title} has a rank of #{@rank}"
@@ -24,8 +36,17 @@ class Movie
   end
 
   def to_s
-    "#{title} has a rank of #{rank}"
+    "#{title} has a rank of #{rank} (#{status})"
   end
 
+
+end
+
+
+#Sample code
+if __FILE__ == $0
+
+  movie = Movie.new("goonies", 5)
+  puts movie.title
 
 end
