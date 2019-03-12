@@ -39,6 +39,10 @@ class Movie
     "#{title} has a rank of #{rank} (#{status})"
   end
 
+  def <=>(other_movie)
+    other_movie.rank <=> @rank
+  end
+
 
 end
 
@@ -48,5 +52,13 @@ if __FILE__ == $0
 
   movie = Movie.new("goonies", 5)
   puts movie.title
+
+  3.times{puts "hi"}
+
+
+
+  10.upto(20) do |number|
+    puts "#{number} - bye"
+  end
 
 end

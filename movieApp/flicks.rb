@@ -28,13 +28,10 @@ movie4 = Movie.new("gremlins", 15)
 playList1 = Playlist.new("playlist 1")
 playList1.add_movie(movie1)
 playList1.add_movie(movie2)
-puts  playList1.movies
-puts playList1.play
-
-playList2 = Playlist.new("fozzie")
-playList2.add_movie(movie3)
-playList2.add_movie(movie4)
-puts playList2.play
+playList1.add_movie(movie3)
+playList1.add_movie(movie4)
+puts playList1.play(10)
+playList1.print_stats
 
 
 =begin
