@@ -3,59 +3,60 @@ require_relative 'game_turn'
 
 class Game
 
+  attr_accessor :title
+
   def initialize(title)
-    @title = title.capitalize
+    @title = title
     @players = []
   end
 
-  def add_player(player)
-    @players << player
-    #or can use players.push(player)
+  def add_player(a_player)
+    @players.push(a_player)
   end
-
-
 
   def play(rounds)
+    puts "There are #{@players.size} players in #{@title}: "
 
-    puts "Game.play Activated!".center(80, "*")
-    puts "There are #{@players.size} players in #{@title}."
+    @players.each do |player|
+      puts player
+    end
 
-    1.upto(rounds) do |roundcount|
-      puts"\nRound #{roundcount}:"
+    1.upto(rounds) do |round|
+      puts "\nRound #{round}:"
       @players.each do |player|
         GameTurn.take_turn(player)
-        puts "I am #{player.name} with a health of #{player.health} and a score of #{player.score}"
+        puts player
       end
-      statistics
-
     end
-
-
-
   end
 
-  def statistics
-
-    sortedByScore = @players.sort_by{|player|player.score}
-    sortedByScore.reverse!
-    puts "\n\n------GAME STATISTICS------"
-    puts "1 - Strong Players:"
-    puts "\t#{sortedByScore[0].name} - #{sortedByScore[0].score}"
-
-    sortedByScore.reverse!
-    puts "1 - Wimpy Players:"
-    puts "\t#{sortedByScore[0].name} - #{sortedByScore[0].score}"
-
-    puts "\nHighest Scores:"
-    sortedByScore.reverse!
-    sortedByScore.each do |player|
-      puts "#{player.name.ljust(30,".")}#{player.score}"
-    end
-
+  def print_name_and_health(player)
+    puts "#{player.name} (#{player.health})"
   end
 
+  def print_stats
+    puts "\n#{@title} Statistics:"
 
+    strong_players, wimpy_players = @players.partition { |player| player.strong? }
+
+    puts "\n#{strong_players.size} strong players:"
+    strong_players.each do |player|
+      print_name_and_health(player)
+    end
+
+    puts "\n#{wimpy_players.size} wimpy players:"
+    wimpy_players.each do |player|
+      print_name_and_health(player)
+    end
+
+    puts "\n#{@title} High Scores:"
+    @players.sort.each do |player|
+      formatted_name = player.name.ljust(20, '.')
+      puts "#{formatted_name} #{player.score}"
+    end
+  end
 end
+
 
 
 #Sample Code for class
