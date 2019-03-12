@@ -1,5 +1,5 @@
 require_relative 'player'
-require_relative 'die'
+require_relative 'game_turn'
 
 class Game
 
@@ -13,24 +13,15 @@ class Game
     #or can use players.push(player)
   end
 
+
+
   def play
 
     puts "Game.play Activated!".center(80, "*")
     puts "There are #{@players.size} players in #{@title}:"
     @players.each do |player|
-      die = Die.new
-      number_rolled = die.roll
-
-      case number_rolled
-      when 5..6
-        player.w00t
-      when 3..4
-        puts "#{player.name} got skipped"
-      when 1..2
-        player.blam
-      end
-
-      puts "I am #{player.name} with a health of #{player.health}"
+    GameTurn.take_turn(player)
+    puts "I am #{player.name} with a health of #{player.health}"
 
     end
 
