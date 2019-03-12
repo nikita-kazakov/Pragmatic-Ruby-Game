@@ -7,10 +7,13 @@ describe Game do
     @game = Game.new("Street Fighter")
   end
 
+  context 'play method'do
 
-  it 'should ' do
-    
+    it 'calls one parameter' do
+    end
+
+
   end
-  
+
   
 end

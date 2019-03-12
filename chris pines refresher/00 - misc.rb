@@ -69,3 +69,40 @@ print"\n\n"
 
 #Sort by:
 print names.sort_by{|name| name.length}
+
+
+
+#Practice iterators
+array = [24,13,8,65]
+
+newArray = array.select {|num|num>20 }
+print newArray
+
+newArray = array.reject {|num|num>20 }
+print newArray
+
+puts "\n\n"
+newArray = array.sort
+puts newArray
+
+puts "\n\n"
+newArray = array.sort.reverse
+print newArray
+puts "\n\n"
+
+newArray = array.reduce{|sum,n| sum + n}
+print newArray
+
+evens, odds = array.partition {|num|num.even? }
+puts "\n\n"
+print evens, odds
+
+puts "\n\n"
+array = ["bobby", "alpha", "shazzball", "dickerson"]
+print array
+
+newArray = array.sort
+print newArray
+
+newArray = array.sort_by{|item|item.length}.reverse
+print newArray
