@@ -106,3 +106,17 @@ print newArray
 
 newArray = array.sort_by{|item|item.length}.reverse
 print newArray
+
+puts "\n\n\n"
+
+numbers = [24,13,8,65]
+result = numbers.any? {|num| num > 20}
+puts result
+
+result = numbers.find{|num| num >=20}
+puts result
+
+result = numbers.map{|num| num * 2}
+puts "\n\n"
+
+print numbers, result
