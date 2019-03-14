@@ -106,3 +106,10 @@ print newArray
 
 newArray = array.sort_by{|item|item.length}.reverse
 print newArray
+
+puts "\n\n\n\n"
+
+#Structs
+Snack = Struct.new(:name, :carbs)
+popcorn = Snack.new("popcorn", 20)
+candy = Snack.new("candy", 15)
