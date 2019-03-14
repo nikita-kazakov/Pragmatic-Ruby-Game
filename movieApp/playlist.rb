@@ -1,5 +1,6 @@
 require_relative 'movie'
 require_relative 'waldorf_and_statler'
+require_relative 'snackbar'
 
 class Playlist
 
@@ -17,7 +18,14 @@ class Playlist
 
 
   def play(viewings)
-    puts "#{@name}'s playlist:"
+    snacks = Snackbar::SNACKS
+    puts "There are #{snacks.size} snacks available:"
+
+    snacks.each do |snack|
+      puts "#{snack.name} has #{snack.carbs} carbs."
+    end
+
+    puts "\n#{@name}'s playlist:"
 
     puts @movies.sort
 
@@ -25,6 +33,8 @@ class Playlist
       puts "\n******Viewing # #{count}******"
       @movies.each do |movie|
         WaldorfAndStatler.review(movie)
+        snack = Snackbar.random
+        puts "#{movie.title} led to #{snack.carbs} #{snack.name} carbs being consumed."
         puts movie
       end
     end
@@ -61,6 +71,6 @@ if __FILE__  == $0
   playlist.add_movie(movie1)
   playlist.add_movie(movie2)
   playlist.add_movie(movie3)
-  playlist.play(10)
+  playlist.play(3)
 
 end
