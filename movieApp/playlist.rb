@@ -11,6 +11,7 @@ class Playlist
     @movies = []
   end
 
+
   def add_movie(a_movie)
     @movies << a_movie
   end
@@ -34,15 +35,34 @@ class Playlist
       @movies.each do |movie|
         WaldorfAndStatler.review(movie)
         snack = Snackbar.random
-        puts "#{movie.title} led to #{snack.carbs} #{snack.name} carbs being consumed."
+        movie.ate_snack(snack)
         puts movie
       end
     end
 
   end
 
+  def total_carbs_consumed
+
+    @movies.reduce(0) do |sum, movie|
+      sum + movie.carbs_consumed
+    end
+
+  end
 
   def print_stats
+
+    puts "#{total_carbs_consumed} total carbs consumed"
+
+    @movies.sort.each do |movie|
+      puts "#{movie.title}'s snack totals:"
+
+      movie.each_snack do |snack|
+        puts"#{snack.carbs} total #{snack.name} carbs."
+      end
+
+      puts "#{movie.carbs_consumed} grand total carbs."
+    end
 
     puts "\n****#{@name}'s Stats:****"
     hits, flops = @movies.partition{|movie| movie.hit?}
@@ -72,5 +92,8 @@ if __FILE__  == $0
   playlist.add_movie(movie2)
   playlist.add_movie(movie3)
   playlist.play(3)
+  playlist.print_stats
+
+
 
 end
