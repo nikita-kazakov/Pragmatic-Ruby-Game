@@ -114,11 +114,27 @@ player4 = Player.new("Shemp", 90)
 
 
 knuckleheads = Game.new("Knuckleheads")
-knuckleheads.add_player(player1)
-knuckleheads.add_player(player2)
-knuckleheads.add_player(player3)
-knuckleheads.add_player(player4)
-knuckleheads.play
+knuckleheads.load_players(ARGV.shift || "/home/osboxes/RubymineProjects/Pragmatic-Ruby-Game/studio_game/players.csv")
+#knuckleheads.add_player(player1)
+#knuckleheads.add_player(player2)
+#knuckleheads.add_player(player3)
+#knuckleheads.add_player(player4)
+#knuckleheads.play
+
+loop do
+  puts "How many rounds? ('quit' to exit)"
+  answer = gets.chomp.downcase
+
+  case answer
+  when /^\d+$/
+    knuckleheads.play(answer.to_i)
+  when 'quit', 'exit'
+    break
+  else
+    puts "Please enter a number or 'quit'"
+  end
+end
+
 #knuckleheads.add_player(player1)
 #knuckleheads.add_player(player2)
 #knuckleheads.add_player(player3)

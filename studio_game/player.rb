@@ -6,10 +6,11 @@ class Player
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
+    @found_treasures = Hash.new(0)
   end
 
   def to_s
-    "I'm #{@name} with a health of #{@health} and a score of #{score}."
+    "I'm #{@name} with Health = #{@health}, points = #{points}, and score = #{score}."
   end
 
   def blam
@@ -23,7 +24,7 @@ class Player
   end
 
   def score
-    @health + @name.length
+    @health + points
   end
 
   def strong?
@@ -32,6 +33,27 @@ class Player
 
   def <=>(other)
     other.score <=> score
+  end
+
+  def found_treasure(treasure)
+    @found_treasures[treasure.name] += treasure.points
+    puts "#{@name} found a #{treasure.name} worth #{treasure.points}"
+    puts "#{@name}'s Treasures: #{@found_treasures}"
+  end
+
+  def points
+    @found_treasures.values.reduce(0){|sum, n| sum + n}
+  end
+
+  def each_found_treasure
+    @found_treasures.each do |name, points|
+      yield Treasure.new(name, points)
+    end
+  end
+
+  def self.from_csv(string)
+    name, health = string.split(',')
+    Player.new(name, Integer(health))
   end
 
 end

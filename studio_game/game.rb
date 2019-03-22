@@ -11,6 +11,30 @@ class Game
     @players = []
   end
 
+  def load_players(from_file)
+
+    File.readlines(from_file).each do |line|
+      add_player(Player.from_csv(line))
+
+    end
+
+  def high_score_entry(player)
+    formatted_name = player.name.ljust(20, '.')
+    "#{formatted_name} #{player.score}"
+  end
+
+  def save_high_scores(to_file="/home/osboxes/RubymineProjects/Pragmatic-Ruby-Game/studio_game/high_scores.txt")
+    File.open(to_file, "w") do |file |
+      file.puts "#{@title} High Scores:"
+      @players.sort.each do |player|
+        file.puts high_score_entry(player)
+      end
+    end
+  end
+
+
+  end
+
   def add_player(a_player)
     @players.push(a_player)
   end
@@ -42,6 +66,15 @@ class Game
     puts "#{player.name} (#{player.health})"
   end
 
+
+  def total_points
+    sumpoints = 0
+    @players.each do |player|
+      sumpoints = sumpoints + player.points
+    end
+    sumpoints
+  end
+
   def print_stats
     puts "\n#{@title} Statistics:"
 
@@ -57,11 +90,31 @@ class Game
       print_name_and_health(player)
     end
 
+    puts"\nPlayers Points Totals:"
+    @players.each do |player|
+      formatted_name = player.name.ljust(20, '.')
+      puts "#{formatted_name} #{player.points}"
+    end
+
     puts "\n#{@title} High Scores:"
     @players.sort.each do |player|
       formatted_name = player.name.ljust(20, '.')
-      puts "#{formatted_name} #{player.score}"
+      "#{formatted_name} #{player.score}"
     end
+
+    puts"\nCum Points (All Players"
+    formatted_name = "Sum".ljust(20, '.')
+    puts "#{formatted_name} #{total_points}"
+
+    @players.sort.each do |player|
+      puts "\n#{player.name}'s point totals:"
+      player.each_found_treasure do |treasure|
+        puts "#{treasure.points} total #{treasure.name} points"
+      end
+      puts "#{player.points} grand total points"
+    end
+
+
   end
 end
 
@@ -74,11 +127,19 @@ player2= Player.new("Ken",100)
 player3 = Player.new("Blanka",100)
 player4 = Player.new("M.Bison",100)
 
-game1 = Game.new("streetFighter")
+game1 = Game.new("StreetFighter")
 game1.add_player(player1)
 game1.add_player(player2)
 game1.add_player(player3)
 game1.add_player(player4)
 game1.play(3)
+game1.print_stats
+puts "\n\n"
+
+game1.load_players("/home/osboxes/RubymineProjects/Pragmatic-Ruby-Game/studio_game/players.csv")
+game1.save_high_scores
+
+
+
 end
 
