@@ -106,15 +106,22 @@ end
 
 require_relative 'player'
 require_relative 'game'
+require_relative 'clumsy_player'
+require_relative 'berserk_player'
 
 player1 = Player.new("Moe", 100)
 player2 = Player.new("Larry", 60)
 player3 = Player.new("Curly", 125)
 player4 = Player.new("Shemp", 90)
+player5 = ClumsyPlayer.new("ClumsyDude", 90)
+player6 = BerserkPlayer.new("Berserk", 100)
 
 
 knuckleheads = Game.new("Knuckleheads")
 knuckleheads.load_players(ARGV.shift || "/home/osboxes/RubymineProjects/Pragmatic-Ruby-Game/studio_game/players.csv")
+
+knuckleheads.add_player(player5)
+knuckleheads.add_player(player6)
 #knuckleheads.add_player(player1)
 #knuckleheads.add_player(player2)
 #knuckleheads.add_player(player3)
