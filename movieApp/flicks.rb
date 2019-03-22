@@ -18,6 +18,7 @@ puts "#{title1} has a rank of #{rank1}"end
 
 require_relative 'movie'
 require_relative 'playlist'
+require_relative 'movie3d'
 
 #No longer need to generate these movie objects as I'm importing them from movies.csv!
 #movie1 = Movie.new("goonies", 10)
@@ -27,6 +28,8 @@ require_relative 'playlist'
 
 playList1 = Playlist.new("playlist 1")
 playList1.load("/home/osboxes/RubymineProjects/Pragmatic-Ruby-Game/movieApp/movies.csv")
+movie3d = Movie3D.new('glee', 5, 10)
+playList1.add_movie(movie3d)
 #playList1.add_movie(movie1)
 #playList1.add_movie(movie2)
 #playList1.add_movie(movie3)
