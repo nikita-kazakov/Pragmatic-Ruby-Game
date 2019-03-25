@@ -29,7 +29,7 @@ end
 array = File.readlines("/home/osboxes/RubymineProjects/Pragmatic-Ruby-Game/movieApp/movies.csv")
 p array
 
-require_relative 'movie'
+require_relative '../lib/movie'
 
 File.readlines("/home/osboxes/RubymineProjects/Pragmatic-Ruby-Game/movieApp/movies.csv").each do |line |
   title, rank = line.split(",")

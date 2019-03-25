@@ -1,4 +1,4 @@
-require_relative 'movie'
+require_relative '../lib/movie'
 
 movie = Movie.new('godfather', 10)
 
