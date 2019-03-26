@@ -1,4 +1,4 @@
-require_relative 'treasure_trove'
+require_relative 'trash/re_trove'
 
 describe Treasure do
 
