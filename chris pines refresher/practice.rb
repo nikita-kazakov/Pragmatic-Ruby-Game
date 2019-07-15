@@ -479,7 +479,10 @@ puts scores.values.reduce{|sum, n| sum + n}
 
 print scores.keys.to_a.to_s
 
-print scores.keys.to_a.to_s
+puts scores.keys
+puts scores.values
+puts scores.values.reduce{|sum, n| sum + n}
+
 
 
 =begin
