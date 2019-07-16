@@ -483,6 +483,20 @@ puts scores.keys
 puts scores.values
 puts scores.values.reduce{|sum, n| sum + n}
 
+scores[:jack] += 15
+scores[:jack] = scores[:jack] + 15
+puts scores
+
+#MAP returns a NEW array with the results.  That's why I'm referencing it to a new variable (mult_scores)
+mult_scores = scores.map do |k,v|
+  v + 100
+end
+
+puts mult_scores
+puts "\n\n\n"
+
+print scores.values.reduce{|sum, n| sum + n}
+
 
 
 =begin
