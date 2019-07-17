@@ -555,3 +555,100 @@ sum3 = moes_treasures.values.reduce{|sum, n| sum + n}
 puts sum3
 puts "\n\n\n\n\n"
 =end
+puts "\n\n\n\n\n"
+
+class Car
+  attr_reader :name
+  attr_writer :name
+  def initialize(name = "default name")
+    @name = name
+    @points = 0
+  end
+
+  def self.description
+    puts "I'm a car class."
+  end
+
+  #def name
+  #  @name
+  #end
+
+  #def name=(name)
+  #  @name = name
+  #end
+
+  def level_up
+    @points += 1
+  end
+
+end
+
+class Honda < Car
+
+
+end
+
+honda = Car.new
+puts honda
+puts honda.name
+honda.name="I'm Honda"
+puts honda.name
+honda.level_up
+honda.level_up
+
+puts honda.inspect
+
+Car.description
+puts "\n\n\n"
+puts Car.ancestors
+
+puts Honda.description
+
+module Items
+  class Books
+    def self.description
+      puts "I'm the books factory"
+    end
+  end
+end
+
+class Hardbound < Items::Books
+end
+
+class Books #FROM ANOTHER CLASS. Will Overwrite.
+  def self.description
+    puts "I'm overwriting your description"
+  end
+end
+
+puts Hardbound.description
+
+puts Hardbound.description
+
+
+
+randhash = {
+    abc: 'hello',
+    'another_key' => 123,
+    4567 => 'third'
+}
+
+print randhash.keys.collect(&:to_s).sort_by { |key| key.length }
+
+print randhash.keys.map{|key| key.to_s}.sort_by{|key| key.length}
+
+def times_two(arg1);
+puts arg1 * 2;
+end
+
+def sum(arg1, arg2);
+puts arg1 + arg2;
+end
+
+sum    1, 2
+
+book = :book
+string = "Sleeps"
+
+puts book.object_id
+puts string.object_id
